@@ -1,0 +1,96 @@
+Clone From GitHub to Local--->
+
+	git clone https://github.com/harshrr/Grunt.gi
+
+Install Node Js
+	
+Install Grunt.js	
+	npm install -g grunt-cli
+	
+Create Package.jsons
+	npm init
+	
+Install Grunt Locally 
+		npm install grunt --save-dev
+
+Create Gruntfile.js File		
+
+Create and Run Task
+	grunt.registerTask('run',function(){
+        console.log('I am running');
+    });	
+	grunt run
+
+Register Taks Run
+	    grunt.registerTask('all',['sleep','run']);
+		grunt all
+
+------------------Install Plugins------------------
+1) Concat Plugin
+
+npm install grunt-contrib-concat --save-dev
+
+grunt.loadNpmTasks('grunt-contrib-concat');
+
+ grunt.initConfig({
+      concat: {
+            js: {
+              src: ['js/*.js'],
+              dest: 'build/script.js',
+            },
+            css: {
+                src: ['css/*.css'],
+                dest: 'build/styles.css',
+              }
+        }        
+    });
+
+    //Load Plugins
+    grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.registerTask('concat-js',['concat:js']);
+    grunt.registerTask('concat-css',['concat:css']);
+	
+	grunt concat
+	grunt concat-js
+	grunt concat-css
+	
+2) Compailing SAAS
+
+npm install node-sass --save-dev
+npm install grunt-contrib-sass --save-dev
+npm install --save-dev grunt-sass
+
+
+grunt.loadNpmTasks('grunt-sass');
+
+sass: {
+            options: {
+                implementation: sass,
+                sourceMap: true
+            },    
+            //buid is a task name
+            build: {
+                files:[{
+                    src : 'css/sass/styles.scss',
+                    dest : 'css/styles.css'                    
+                }]
+            }
+        }
+
+3)Uglify JavaScript 
+
+npm install grunt-contrib-uglify --save-dev
+
+uglify: {
+            // options: {
+            //   mangle: false
+            // },
+            buid: {
+              files: {
+                src : 'build/script.js',
+                dest : 'build/script.js'        
+              }
+            }
+          }   
+
+grunt uglify
